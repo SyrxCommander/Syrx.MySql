@@ -1078,7 +1078,7 @@
     {
       "Alias": "Syrx.Sql",
       "ProviderName": "MySql.Data.MySqlClient",
-      "ConnectionString": "insert connection string here"
+      "ConnectionString": ""
     }
   ]
 }
