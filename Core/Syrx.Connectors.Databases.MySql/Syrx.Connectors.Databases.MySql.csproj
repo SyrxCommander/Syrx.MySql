@@ -6,17 +6,19 @@
     <Authors>@sextondjc</Authors>
     <Company />
     <Description>Syrx connector specifically for connecting to MySQL instances using the Syrx connector using the MySql.Data.MySqlClientFactory</Description>
-    <PackageLicenseUrl>https://github.com/SyrxCommander/Syrx.MySql</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/SyrxCommander/Syrx.MySql</PackageProjectUrl>
-    <PackageReleaseNotes>Updated package information.</PackageReleaseNotes>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <FileVersion>2.0.0.0</FileVersion>
+    <PackageLicenseUrl>https://github.com/Syrx</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Syrx</PackageProjectUrl>
+    <PackageReleaseNotes>• Updated package dependency.</PackageReleaseNotes>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+    <Version>1.1.0</Version>
+    <Copyright>https://github.com/Syrx</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.9-dmr" />
-    <PackageReference Include="Syrx.Connectors.Databases" Version="1.0.0" />
-    <PackageReference Include="Syrx.Settings.Databases" Version="1.0.0" />
+    <PackageReference Include="Syrx.Connectors.Databases" Version="1.1.0" />
+    <PackageReference Include="Syrx.Settings.Databases" Version="1.1.0" />
   </ItemGroup>
 
   </Project>

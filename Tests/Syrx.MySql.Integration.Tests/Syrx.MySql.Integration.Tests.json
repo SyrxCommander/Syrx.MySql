@@ -1076,8 +1076,7 @@
   ],
   "Connections": [
     {
-      "Alias": "Syrx.Sql",
-      "ProviderName": "MySql.Data.MySqlClient",
+      "Alias": "Syrx.Sql",      
       "ConnectionString": ""
     }
   ]
