@@ -65,3 +65,9 @@ Temporary Items
 /Tests/Syrx.Tests.Models/bin/Release/netstandard2.0
 /Tests/Syrx.Tests.Models/obj
 /_NCrunch_Syrx.MySql
+/Core/Syrx.Connectors.Databases.MySql/bin/Debug
+/Core/Syrx.MySql/bin/Debug
+/Tests/Syrx.Commanders.Databases.Integration.Tests/bin/Debug/netcoreapp2.0
+/Tests/Syrx.MySql.Integration.Tests/bin/Debug/netcoreapp2.0
+/Tests/Syrx.Tests.Common/bin/Debug/netstandard2.0
+/Tests/Syrx.Tests.Models/bin/Debug/netstandard2.0

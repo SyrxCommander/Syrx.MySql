@@ -6,19 +6,19 @@
     <Authors></Authors>
     <Company />
     <Description>Package built specifically for MySql, contains all the necessary package references for simplified installation.</Description>
-    <PackageLicenseUrl>https://github.com/SyrxCommander/Syrx.MySql</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/SyrxCommander/Syrx.MySql</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/SyrxCommander/Syrx.MySql</RepositoryUrl>
-    <PackageReleaseNotes>• Updated package information.
-• Updated to use Syrx.Commanders.Databases 1.1.0</PackageReleaseNotes>
-    <Version>1.1.0</Version>
+    <PackageLicenseUrl>https://github.com/Syrx</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Syrx</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Syrx</RepositoryUrl>
+    <PackageReleaseNotes>• Updated package dependencies</PackageReleaseNotes>
+    <Version>1.2.0</Version>
+    <Copyright>https://github.com/Syrx</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Syrx" Version="1.1.0" />
-    <PackageReference Include="Syrx.Commanders.Databases" Version="1.1.0" />
-    <PackageReference Include="Syrx.Readers.Databases" Version="1.0.0" />
-    <PackageReference Include="Syrx.Settings.Databases" Version="1.0.0" />
+    <PackageReference Include="Syrx.Commanders.Databases" Version="1.2.0" />
+    <PackageReference Include="Syrx.Readers.Databases" Version="1.1.0" />
+    <PackageReference Include="Syrx.Settings.Databases" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
