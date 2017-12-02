@@ -21,7 +21,7 @@ namespace Syrx.MySql.Integration.Tests.Setup
             _commander = CommanderHelper.UseMySql<DatabaseSetup>();
         }
 
-        public void Setup(string name = "drapper_my_sql")
+        public void Setup(string name = "syrxdev")
         {
             Console.WriteLine($"Running environment setup checks against databse '{name}'.");
             if (!DatabaseExists(name))
@@ -35,37 +35,7 @@ namespace Syrx.MySql.Integration.Tests.Setup
                 Console.WriteLine("Poco table doesn't exist. Attempting to create.");
                 CreatePocoTable();
             }
-
-            //if (!TableExists("BulkInsert"))
-            //{
-            //    Console.WriteLine("BulkInsert table doesn't exist. Attempting to create.");
-            //    CreateBulkInsertTable();
-            //}
-
-            if (!TableCreatorExists())
-            {
-                Console.WriteLine("Table creator procedure doesn't exist. Attempting to create.");
-                CreateTableCreatorProcedure();
-            }
-
-            //if (!IdentityTesterExists())
-            //{
-            //    Console.WriteLine("Identity tester procedure doesn't exist. Attempting to create.");
-            //    CreateIdentityTesterProcedure();
-            //}
-
-            //if (!BulkInsertProcedureExists())
-            //{
-            //    Console.WriteLine("Bulk insert tester procedure doesn't exist. Attempting to create.");
-            //    CreateBulkInsertProcedure();
-            //}
-
-            //if (!BulkInsertAndReturnProcedureExists())
-            //{
-            //    Console.WriteLine("Bulk insert and return tester procedure doesn't exist. Attempting to create.");
-            //    CreateBulkInsertAndReturnProcedure();
-            //}
-
+            
             if (IsStale())
             {
                 Console.WriteLine("Data in the Poco table is stale. Attempting to refresh.");
@@ -85,55 +55,32 @@ namespace Syrx.MySql.Integration.Tests.Setup
 
         #region / database /
 
-        private void CreateDatabase(string name = "drapper_my_sql")
+        private void CreateDatabase(string name = "syrxdev")
         {
             // using Query to skip transactionality. 
             _commander.Query<string>(new {name});
             Console.WriteLine($"{name} created!");
         }
-
-        private void DropDatabase(string name = "drapper_my_sql")
-        {
-            _commander.Execute(new {name});
-            Console.WriteLine($"{name} dropped!");
-        }
-
-        private bool DatabaseExists(string name = "drapper_my_sql")
+        
+        private bool DatabaseExists(string name = "syrxdev")
         {
             return _commander.Query<bool>(new {name}).SingleOrDefault();
         }
-
-        private void DropAllTables(string name)
-        {
-            _commander.Execute(new {name});
-        }
-
+        
         #endregion
 
         #region / tables / 
 
         private void CreateDistributedTransactionTable()
-        {
-            const string tableName = "DistributedTransaction";
-            Console.WriteLine("Creating DistributedTransactionTable");
-            CreateTable(tableName);
-        }
-
-        private void CreateTable(string tableName)
-        {
-            _commander.Execute(new {tableName});
-        }
+        {            
+            _commander.Execute<bool>();
+        }        
 
         private void CreatePocoTable()
         {
             _commander.Execute<bool>();
         }
-
-        private void CreateBulkInsertTable()
-        {
-            _commander.Execute<bool>();
-        }
-
+        
         private bool TableExists(string name)
         {
             return _commander.Query<bool>(new {name}).SingleOrDefault();
@@ -183,50 +130,6 @@ namespace Syrx.MySql.Integration.Tests.Setup
             }
         }
 
-        #endregion
-
-        #region / procedures / 
-
-        private bool TableCreatorExists()
-        {
-            return _commander.Query<bool>().SingleOrDefault();
-        }
-
-        private void CreateTableCreatorProcedure()
-        {
-            _commander.Execute<bool>();
-        }
-
-        private bool IdentityTesterExists()
-        {
-            return _commander.Query<bool>().SingleOrDefault();
-        }
-
-        private void CreateIdentityTesterProcedure()
-        {
-            _commander.Execute<bool>();
-        }
-
-        private bool BulkInsertProcedureExists()
-        {
-            return _commander.Query<bool>().SingleOrDefault();
-        }
-
-        private bool BulkInsertAndReturnProcedureExists()
-        {
-            return _commander.Query<bool>().SingleOrDefault();
-        }
-
-        private void CreateBulkInsertProcedure()
-        {
-            _commander.Execute<bool>();
-        }
-
-        private void CreateBulkInsertAndReturnProcedure()
-        {
-            _commander.Execute<bool>();
-        }
-
-        #endregion
+        #endregion        
     }
 }

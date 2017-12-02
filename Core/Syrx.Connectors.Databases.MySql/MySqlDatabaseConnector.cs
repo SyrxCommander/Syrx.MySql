@@ -13,8 +13,6 @@ namespace Syrx.Connectors.Databases.MySql
     public class MySqlDatabaseConnector : DatabaseConnector
     {
         public MySqlDatabaseConnector(IDatabaseCommanderSettings settings)
-            : base(settings, () => MySqlClientFactory.Instance)
-        {
-        }
+            : base(settings, () => MySqlClientFactory.Instance) {}
     }
 }
