@@ -65,11 +65,11 @@ namespace Syrx.Commanders.Databases.Integration.Tests
             var task = _commander.QueryAsync<int>(cancellationToken: tokenSource.Token);
             var exception = Throws<AggregateException>(() => task.Wait(TimeSpan.FromSeconds(5)));
             var innerExceptions = exception.InnerExceptions;
-            Equal(1, innerExceptions.Count);
+            Single(innerExceptions);
             IsAssignableFrom<Exception>(innerExceptions.Single());
             const string expected =
-                "A severe error occurred on the current command.  The results, if any, should be discarded.\r\nOperation cancelled by user.";
-            //Equal(expected, innerExceptions.Single().Message);
+                "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'waitfor delay '00:00:05'' at line 1";
+            Equal(expected, innerExceptions.Single().Message);
         }
     }
 }

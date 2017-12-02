@@ -930,47 +930,49 @@
           "Commands": {
             "DatabaseExists": {
               "ConnectionAlias": "Syrx.Sql",
-              "CommandText":
-                "select if(exists(select schema_name from information_schema.schemata where schema_name = @name), 1, 0);",
+              "CommandText": "select if(exists(select schema_name from information_schema.schemata where schema_name = @name), 1, 0);",
               "CommandTimeout": 30,
               "CommandType": 1,
               "Flags": 5
             },
             "CreateDatabase": {
               "ConnectionAlias": "Syrx.Sql",
-              "CommandText": "create database drapper_my_sql if not exists;",
+              "CommandText": "create database syrxdev if not exists;",
               "CommandTimeout": 30,
               "CommandType": 1,
               "Flags": 5
             },
             "TableExists": {
               "ConnectionAlias": "Syrx.Sql",
-              "CommandText":
-                "select if(exists(select table_name from information_schema.tables where table_name = @name), 1, 0);",
+              "CommandText": "select if(exists(select table_name from information_schema.tables where table_name = @name), 1, 0);",
               "CommandTimeout": 30,
               "CommandType": 1,
               "Flags": 5
             },
             "CreatePocoTable": {
               "ConnectionAlias": "Syrx.Sql",
-              "CommandText":
-                "create table if not exists `Poco` (`Id` int not null auto_increment primary key,`Name` varchar(50) not null,`Value` decimal(18) not null,`Modified` timestamp default current_timestamp) default charset=utf8;",
+              "CommandText": "create table if not exists `Poco` (`Id` int not null auto_increment primary key,`Name` varchar(50) not null,`Value` decimal(18) not null,`Modified` timestamp default current_timestamp) default charset=utf8;",
+              "CommandTimeout": 30,
+              "CommandType": 1,
+              "Flags": 5
+            },
+            "CreateDistributedTransactionTable": {
+              "ConnectionAlias": "Syrx.Sql",
+              "CommandText": "create table if not exists `DistributedTransaction` (`Id` int not null auto_increment primary key,`Name` varchar(50) not null,`Value` decimal(18) not null,`Modified` timestamp default current_timestamp) default charset=utf8;",
               "CommandTimeout": 30,
               "CommandType": 1,
               "Flags": 5
             },
             "CreateBulkInsertTable": {
               "ConnectionAlias": "Syrx.Sql",
-              "CommandText":
-                "create table if not exists BulkInsert(`Id` int,`FirstName` varchar(50),`LastName` varchar(50));",
+              "CommandText": "create table if not exists BulkInsert(`Id` int,`FirstName` varchar(50),`LastName` varchar(50));",
               "CommandTimeout": 30,
               "CommandType": 1,
               "Flags": 5
             },
             "IsStale": {
               "ConnectionAlias": "Syrx.Sql",
-              "CommandText":
-                "select case when Modified is null then '1984-12-23' else Modified end as Modified from (select max(modified) as Modified from Poco) as Poco;",
+              "CommandText": "select case when Modified is null then '1984-12-23' else Modified end as Modified from (select max(modified) as Modified from Poco) as Poco;",
               "CommandTimeout": 30,
               "CommandType": 1,
               "Flags": 5
@@ -991,31 +993,28 @@
             },
             "PopulatePocoTable": {
               "ConnectionAlias": "Syrx.Sql",
-              "CommandText":
-                "insert into `Poco` (`Id`, `Name`, `Value`,`Modified`) select @Id, @Name, @Value, @Modified;",
+              "CommandText": "insert into `Poco` (`Id`, `Name`, `Value`,`Modified`) select @Id, @Name, @Value, @Modified;",
               "CommandTimeout": 30,
               "CommandType": 1,
               "Flags": 5
             },
             "IdentityTesterExists": {
               "ConnectionAlias": "Syrx.Sql",
-              "CommandText":
-                "select if(exists(select routine_name from information_schema.routines where routine_name = 'usp_IdentityTester'), 1, 0);",
+              "CommandText": "select if(exists(select routine_name from information_schema.routines where routine_name = 'usp_IdentityTester'), 1, 0);",
               "CommandTimeout": 30,
               "CommandType": 1,
               "Flags": 5
             },
             "CreateIdentityTesterProcedure": {
               "ConnectionAlias": "Syrx.Sql",
-              "CommandText":
-                "create procedure [usp_IdentityTester] @name varchar(50),@value decimal(18, 2) as begin insert into [IdentityTest](Name,Value,Modified)select @name,@value,getutcdate() select scope_identity() end;",
+              "CommandText": "create procedure [usp_IdentityTester] @name varchar(50),@value decimal(18, 2) as begin insert into [IdentityTest](Name,Value,Modified)select @name,@value,getutcdate() select scope_identity() end;",
               "CommandTimeout": 30,
               "CommandType": 1,
               "Flags": 5
             },
             "CreateTable": {
               "ConnectionAlias": "Syrx.Sql",
-              "CommandText": "drapper_my_sql.usp_CreateTable",
+              "CommandText": "syrxdev.usp_CreateTable",
               "CommandTimeout": 30,
               "CommandType": 4,
               "Flags": 5,
@@ -1023,48 +1022,42 @@
             },
             "TableCreatorExists": {
               "ConnectionAlias": "Syrx.Sql",
-              "CommandText":
-                "select if(exists(select routine_name from information_schema.routines where routine_name = 'usp_CreateTable'), 1, 0);",
+              "CommandText": "select if(exists(select routine_name from information_schema.routines where routine_name = 'usp_CreateTable'), 1, 0);",
               "CommandTimeout": 30,
               "CommandType": 1,
               "Flags": 5
             },
             "CreateTableCreatorProcedure": {
               "ConnectionAlias": "Syrx.Sql",
-              "CommandText":
-                "use `drapper_my_sql`; drop procedure if exists `usp_CreateTable`; delimiter $$ use `drapper_my_sql`$$ create procedure `usp_CreateTable` (int tableName varchar(255))begin set @drop_template = concat(\"drop table if exists `\", tableName, \"`;\"); prepare drop_stmt from @drop_template; execute drop_stmt; deallocate prepare drop_stmt; set @create_template = concat(\"create table if not exists `\", tableName, \"` (`Id` int not null auto_increment primary key,`Name` varchar(50) not null,`Value` decimal(18) not null,`Modified` timestamp default current_timestamp) default charset=utf8;\"); prepare create_stmt from @create_template; execute create_stmt; deallocate prepare create_stmt;end$$ delimiter;",
+              "CommandText": "use `syrxdev`; drop procedure if exists `usp_CreateTable`; delimiter $$ use `syrxdev`$$ create procedure `usp_CreateTable` (int tableName varchar(255))begin set @drop_template = concat(\"drop table if exists `\", tableName, \"`;\"); prepare drop_stmt from @drop_template; execute drop_stmt; deallocate prepare drop_stmt; set @create_template = concat(\"create table if not exists `\", tableName, \"` (`Id` int not null auto_increment primary key,`Name` varchar(50) not null,`Value` decimal(18) not null,`Modified` timestamp default current_timestamp) default charset=utf8;\"); prepare create_stmt from @create_template; execute create_stmt; deallocate prepare create_stmt;end$$ delimiter;",
               "CommandTimeout": 30,
               "CommandType": 1,
               "Flags": 5
             },
             "BulkInsertProcedureExists": {
               "ConnectionAlias": "Syrx.Sql",
-              "CommandText":
-                "if exists (select * from sys.objects where object_id = object_id(N'[usp_BulkInsert]') and type in (N'P', N'PC')) select 1 [Result];",
+              "CommandText": "if exists (select * from sys.objects where object_id = object_id(N'[usp_BulkInsert]') and type in (N'P', N'PC')) select 1 [Result];",
               "CommandTimeout": 30,
               "CommandType": 1,
               "Flags": 5
             },
             "CreateBulkInsertProcedure": {
               "ConnectionAlias": "Syrx.Sql",
-              "CommandText":
-                "create procedure [usp_BulkInsert](@path varchar(max)) as begin set nocount on; declare  @command nvarchar(max),@template nvarchar(max) = N'bulk insert [BulkInsert] from ''%path'' with (fieldterminator = '','', rowterminator = ''\n'')' select @command = replace(@template, '%path', @path);exec sp_executesql @command; end;",
+              "CommandText": "create procedure [usp_BulkInsert](@path varchar(max)) as begin set nocount on; declare  @command nvarchar(max),@template nvarchar(max) = N'bulk insert [BulkInsert] from ''%path'' with (fieldterminator = '','', rowterminator = ''\n'')' select @command = replace(@template, '%path', @path);exec sp_executesql @command; end;",
               "CommandTimeout": 30,
               "CommandType": 1,
               "Flags": 5
             },
             "BulkInsertAndReturnProcedureExists": {
               "ConnectionAlias": "Syrx.Sql",
-              "CommandText":
-                "if exists (select * from sys.objects where object_id = object_id(N'[usp_BulkInsertAndReturn]') and type in (N'P', N'PC')) select 1 [Result];",
+              "CommandText": "if exists (select * from sys.objects where object_id = object_id(N'[usp_BulkInsertAndReturn]') and type in (N'P', N'PC')) select 1 [Result];",
               "CommandTimeout": 30,
               "CommandType": 1,
               "Flags": 5
             },
             "CreateBulkInsertAndReturnProcedure": {
               "ConnectionAlias": "Syrx.Sql",
-              "CommandText":
-                "create procedure [usp_BulkInsertAndReturn](@path varchar(max)) as begin set nocount on; declare  @command nvarchar(max),@template nvarchar(max) = N'bulk insert [BulkInsert]from ''%path'' with (fieldterminator = '','', rowterminator = ''\n'')' select @command = replace(@template, '%path', @path);exec sp_executesql @command; select * from [BulkInsert]; end;",
+              "CommandText": "create procedure [usp_BulkInsertAndReturn](@path varchar(max)) as begin set nocount on; declare  @command nvarchar(max),@template nvarchar(max) = N'bulk insert [BulkInsert]from ''%path'' with (fieldterminator = '','', rowterminator = ''\n'')' select @command = replace(@template, '%path', @path);exec sp_executesql @command; select * from [BulkInsert]; end;",
               "CommandTimeout": 30,
               "CommandType": 1,
               "Flags": 5
@@ -1076,7 +1069,7 @@
   ],
   "Connections": [
     {
-      "Alias": "Syrx.Sql",      
+      "Alias": "Syrx.Sql",
       "ConnectionString": ""
     }
   ]
