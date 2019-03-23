@@ -3,21 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E6C465EE-5559-4DCC-A42C-2B41DD0C06E5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E6C465EE-5559-4DCC-A42C-2B41DD0C06E5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Syrx.Connectors.Databases.MySql", "Core\Syrx.Connectors.Databases.MySql\Syrx.Connectors.Databases.MySql.csproj", "{B965BD1B-3812-4D9C-8F3E-2A8350F677AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Syrx.Connectors.Databases.MySql", "src\Syrx.Connectors.Databases.MySql\Syrx.Connectors.Databases.MySql.csproj", "{B965BD1B-3812-4D9C-8F3E-2A8350F677AC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Syrx.MySql", "Core\Syrx.MySql\Syrx.MySql.csproj", "{200935D3-A82E-4C8A-ACBF-98B504B34677}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Syrx.MySql", "src\Syrx.MySql\Syrx.MySql.csproj", "{200935D3-A82E-4C8A-ACBF-98B504B34677}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1EED100B-B45B-4557-8C91-6A60333BEDD8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1EED100B-B45B-4557-8C91-6A60333BEDD8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Syrx.Commanders.Databases.Integration.Tests", "Tests\Syrx.Commanders.Databases.Integration.Tests\Syrx.Commanders.Databases.Integration.Tests.csproj", "{DD5C8233-2E51-4191-B8EF-1F566B05558F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Syrx.Commanders.Databases.Integration.Tests", "tests\Syrx.Commanders.Databases.Integration.Tests\Syrx.Commanders.Databases.Integration.Tests.csproj", "{DD5C8233-2E51-4191-B8EF-1F566B05558F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Syrx.Tests.Common", "Tests\Syrx.Tests.Common\Syrx.Tests.Common.csproj", "{15B4A217-A9B6-4E42-830A-BFCD8BF58F38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Syrx.Tests.Common", "tests\Syrx.Tests.Common\Syrx.Tests.Common.csproj", "{15B4A217-A9B6-4E42-830A-BFCD8BF58F38}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Syrx.Tests.Models", "Tests\Syrx.Tests.Models\Syrx.Tests.Models.csproj", "{A4BDC631-C041-4F7F-986C-30481F1E0F4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Syrx.Tests.Models", "tests\Syrx.Tests.Models\Syrx.Tests.Models.csproj", "{A4BDC631-C041-4F7F-986C-30481F1E0F4C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Syrx.MySql.Integration.Tests", "Tests\Syrx.MySql.Integration.Tests\Syrx.MySql.Integration.Tests.csproj", "{0DDE9684-F133-473C-BA61-50EF76A0A8DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Syrx.MySql.Integration.Tests", "tests\Syrx.MySql.Integration.Tests\Syrx.MySql.Integration.Tests.csproj", "{0DDE9684-F133-473C-BA61-50EF76A0A8DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{044E6088-356D-400F-BAE3-0F8134CF75EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

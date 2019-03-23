@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\Syrx.Connectors.Databases.MySql\Syrx.Connectors.Databases.MySql.csproj" />
+    <ProjectReference Include="..\..\src\Syrx.Connectors.Databases.MySql\Syrx.Connectors.Databases.MySql.csproj" />
     <ProjectReference Include="..\Syrx.Commanders.Databases.Integration.Tests\Syrx.Commanders.Databases.Integration.Tests.csproj" />
     <ProjectReference Include="..\Syrx.Tests.Common\Syrx.Tests.Common.csproj" />
   </ItemGroup>
