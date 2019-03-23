@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -9,8 +9,8 @@
     <PackageLicenseUrl>https://github.com/Syrx</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Syrx</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Syrx</RepositoryUrl>
-    <PackageReleaseNotes>• Updated package to use Syrx.Commanders.Databases 1.4.0</PackageReleaseNotes>
-    <Version>1.3.0</Version>
+    <PackageReleaseNotes>• Updated dependencies</PackageReleaseNotes>
+    <Version>1.4.0</Version>
     <Copyright>https://github.com/Syrx</Copyright>
   </PropertyGroup>
 
