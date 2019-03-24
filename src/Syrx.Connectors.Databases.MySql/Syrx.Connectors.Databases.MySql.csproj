@@ -7,6 +7,7 @@
     <Company />
     <Description>Syrx connector specifically for connecting to MySQL instances using the Syrx connector using MySqlConnector</Description>
     <PackageLicenseUrl>https://github.com/Syrx</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Syrx</PackageProjectUrl>
     <PackageReleaseNotes>• Updated package dependency.</PackageReleaseNotes>
     <AssemblyVersion>1.2.0.0</AssemblyVersion>
